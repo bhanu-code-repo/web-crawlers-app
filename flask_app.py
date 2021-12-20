@@ -1,6 +1,7 @@
 # Importing required packages
 from flask import Flask, render_template, request
 from search import search_online
+import os
 
 # create flask app
 app = Flask(__name__)
@@ -23,4 +24,5 @@ def scrappers():
 
 # running the app on the local machine on port 9000
 if __name__ == "__main__":
-    app.run(debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
